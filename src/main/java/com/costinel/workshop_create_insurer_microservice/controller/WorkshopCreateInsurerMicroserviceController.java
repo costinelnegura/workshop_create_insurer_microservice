@@ -24,9 +24,10 @@ public class WorkshopCreateInsurerMicroserviceController {
     }
 
     @PostMapping(value = "/saveInsurer")
-    public String saveInsurer(@RequestBody Insurer insurer){
-        insurerRepo.save(insurer);
-        return "Insurer saved successfully!";
+    public long saveInsurer(@RequestBody Insurer insurer){
+        long id = insurerRepo.save(insurer).getId();
+        System.out.println("Insurer saved successfully!");
+        return id;
     }
 
     @PutMapping(value = "/updateInsurer/{id}")
